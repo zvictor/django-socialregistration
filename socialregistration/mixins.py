@@ -60,6 +60,13 @@ class CommonMixin(TemplateResponseMixin):
         return self.render_to_response({
             'error': _("This user account is marked as inactive.")})
 
+    def conflict_response(self):
+        """
+        Return a race conflict message.
+        """
+        return self.render_to_response({
+            'error': _("It looks like two profiles are trying to be created in a race condition.")})
+
     def redirect(self, request):
         """
         Redirect the user back to the ``next`` session/request variable.

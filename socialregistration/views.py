@@ -242,6 +242,11 @@ class SetupCallback(SocialRegistration, View):
 
         # Logged in user connecting an account
         if request.user.is_authenticated():
+            try:
+		self.get_profile(**lookup_kwargs)
+                # Race condition - displaying an error message.
+            	return self.conflict_response()
+            except: pass
             profile, created = self.get_or_create_profile(request.user,
                 save=True, **lookup_kwargs)
 
