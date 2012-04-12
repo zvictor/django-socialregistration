@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from socialregistration.clients.oauth import OAuth2
 from socialregistration.settings import SESSION_KEY
 import json
-import facebook
+from socialregistration.contrib import facebook
 
 class Facebook(OAuth2):
     client_id = getattr(settings, 'FACEBOOK_APP_ID', '')
